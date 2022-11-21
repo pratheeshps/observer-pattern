@@ -1,0 +1,137 @@
+.App {
+  font-family: sans-serif;
+}
+
+.noti-center-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.noti-center-container .ellipse {
+  white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.noti-center-container .two-lines {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.noti-center-container {
+  border: 1px solid #e0e2e9;
+  min-height: 200px;
+  max-height: 65vh;
+  overflow: auto;
+  width: 300px;
+  background: #ffffff;
+  box-shadow: 0px 2px 4px -2px rgba(21, 26, 34, 0.1),
+    0px 1px 2px -1px rgba(21, 26, 34, 0.06);
+  border-radius: 2px;
+}
+
+.noti-center-container .empty-noti {
+  display: flex;
+  height: 150px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.noti-center-container header {
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom: 1px solid #e0e2e9;
+  padding: 0.5rem 0.5rem;
+  color: #151a22;
+  letter-spacing: 0.16px;
+}
+
+.noti-center-container ul {
+  padding: 1rem 0.5rem;
+}
+
+.noti-center-container ul .title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #677386;
+}
+
+.noti-center-container li {
+  display: flex;
+  padding: 1rem 0;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.noti-center-container li .read {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background: #3f51b5;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+}
+
+.noti-center-container li .icon span {
+  display: inline-block;
+
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 2.5;
+}
+
+.noti-center-container li .icon span.error {
+  background: #fef3f2;
+  color: #d92d20;
+}
+
+.noti-center-container li .icon span.info {
+  background: #f2f0fb;
+  color: #5d06ff;
+}
+
+.noti-center-container li .icon span.warning {
+  background: #fffaeb;
+  color: #dc6803;
+}
+
+.noti-center-container .details {
+  width: 100%;
+}
+
+.noti-center-container .info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.noti-center-container .info .message {
+  font-size: 14px;
+  color: #151a22;
+}
+
+.noti-center-container .details p {
+  margin: 0.3rem 0;
+  font-size: 12px;
+  color: #677386;
+}
+
+.noti-center-container .details .date {
+  font-size: 11px;
+  font-weight: 400;
+  color: #677386;
+}
+
+button {
+  margin: 1rem 0;
+  margin-right: 15px;
+}
