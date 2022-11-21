@@ -5,7 +5,9 @@ import { useState, useEffect } from "react";
 
 export default function App() {
   const [showNotification, setShowNotification] = useState(false);
-  const [unReadCount, setUnReadCount] = useState(0);
+  const [unReadCount, setUnReadCount] = useState(
+    notificationObserver.getUnreadCount()
+  );
 
   const handleAddNotification = (type) => {
     const id = `${+new Date()}` + Math.floor(Math.random() * 10000);
@@ -17,7 +19,7 @@ export default function App() {
         description: `Please Contact AppviewX support for license renewal.`,
         status: "error",
         read: false,
-        date: +new Date()
+        date: +new Date(),
       },
       info: {
         id,
@@ -25,7 +27,7 @@ export default function App() {
         description: `CERT+ certificates limit has been exceeded. Please contact AppViewX support for license renewal.`,
         status: "info",
         read: false,
-        date: +new Date()
+        date: +new Date(),
       },
       warning: {
         id,
@@ -33,8 +35,8 @@ export default function App() {
         description: `CERT+ certificates limit will exceed soon. Please contact AppViewX support for license renewal.`,
         status: "warning",
         read: false,
-        date: +new Date()
-      }
+        date: +new Date(),
+      },
     };
 
     const message = obj[type];
@@ -46,10 +48,12 @@ export default function App() {
   };
 
   const handleSubscription = (message, count) => {
-    if (count) {
-      setUnReadCount(count);
-    }
+    setUnReadCount(count);
   };
+
+  useEffect(() => {
+    setUnReadCount(notificationObserver.getUnreadCount());
+  }, [showNotification]);
 
   useEffect(() => {
     notificationObserver.subscribe(handleSubscription);
@@ -61,8 +65,8 @@ export default function App() {
   return (
     <>
       <button onClick={toggleNotification}>
-        {showNotification ? "Hide notification" : "Show notification"} :{" "}
-        {unReadCount}
+        {showNotification ? "Hide notification" : "Show notification"}
+        {unReadCount ? ` : ${unReadCount}` : ""}
       </button>
       <div className="App">{showNotification && <NotificationCenter />}</div>
       <button onClick={() => handleAddNotification("error")}>
